@@ -307,6 +307,7 @@ a.row:hover .arrow{transform:translate(6px,-6px)}
 .idea-head .h2{max-width:18ch}
 @media (min-width:760px){.idea-head{text-align:center;justify-items:center}}
 .dossier{all:unset;box-sizing:border-box;display:block;position:relative;width:min(900px,100%);aspect-ratio:16/10;margin-inline:auto;cursor:pointer;border-radius:var(--r-lg);--sh:var(--sh-2)}
+.ds-open svg{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-left:6px}
 .dossier:focus-visible{outline:3px solid var(--ink);outline-offset:6px}
 .dossier>span{position:absolute;display:block}
 .ds-ground{inset:0;border-radius:var(--r-lg);background:var(--ember)}
@@ -670,7 +671,7 @@ dialog.plan .unlock{border-radius:var(--r-sm)}
       <p class="eyebrow">Strategy for Phizz</p>
       <h2 class="h2" id="ideasTitle">We've already planned your first six hours.</h2>
     </div>
-    <button class="dossier" type="button" data-open-plan aria-label="Open the Grand Opening plan">
+    <a class="dossier" href="plan.html" aria-label="Read the Grand Opening plan">
       <span class="ds-ground" aria-hidden="true"></span>
       <span class="ds-back" aria-hidden="true"></span>
       <span class="ds-sheet s2" aria-hidden="true"><i></i><i></i><i></i><i class="short"></i></span>
@@ -678,100 +679,11 @@ dialog.plan .unlock{border-radius:var(--r-sm)}
       <span class="ds-front" aria-hidden="true"><span class="ds-label">Phizz · Grand Opening · 16 Nov</span></span>
       <span class="ds-chip c1" aria-hidden="true">Free preview</span>
       <span class="ds-chip c2" aria-hidden="true">The offer</span>
-      <span class="ds-open">Open the plan <span aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
-    </button>
+      <span class="ds-open">Read the plan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+    </a>
   </div>
 </section>
 
-<dialog class="plan" id="plan" aria-labelledby="planTitle">
-  <div class="plan-bar"><div><p class="eyebrow">Phizz × Gateshead Media · Free preview</p><h2 id="planTitle">Grand Opening plan</h2></div><button class="btn btn-line" type="button" data-close-plan>Close</button></div>
-  <div class="plan-body">
-    <p class="plan-intro">You told us this is your first live, and that more lives depend on how it goes. So the plan does two jobs: sell well on 16&nbsp;November, and show you clearly whether TikTok deserves more of your time. This is a free preview. The full plan unlocks when we go ahead together.</p>
-    <section class="plan-page" aria-labelledby="pGoal">
-      <p class="sec-mark"><span class="sec-no">01</span><span class="sec-label mono">The goal</span></p>
-      <h3 class="plan-h" id="pGoal">Beat £10,000 on the day.</h3>
-      <p class="lede">Emma at TikTok told us health brands usually make about £10,000 on their grand opening day, with around half from the live. That's the bar. We're planning to clear it.</p>
-      <div class="points">
-        <article class="pt"><h4>Beat the usual day</h4><p>More than £10,000 across the day, and more than £5,000 from the six hours on air.</p></article>
-        <article class="pt"><h4>Turn viewers into customers</h4><p>Every deal, gift and giveaway is there to move people from watching to buying.</p></article>
-        <article class="pt"><h4>Know if it's worth repeating</h4><p>You'll see what sold, when and why, so deciding on more lives is easy, either way.</p></article>
-      </div>
-    </section>
-    <section class="plan-page" aria-labelledby="pWho">
-      <p class="sec-mark"><span class="sec-no">02</span><span class="sec-label mono">Who it's for</span></p>
-      <h3 class="plan-h" id="pWho">Busy adults. One easy habit.</h3>
-      <p class="lede">Your website speaks to working parents, commuters who train before work, nurses on long shifts and frequent travellers. Your reviews show the same people buying. Three things we found shape the live.</p>
-      <div class="points">
-        <article class="pt"><h4>Their moments</h4><p>The school run, a workout before work, a long shift, a flight. We sell Phizz in the moments your own site names, not as a list of ingredients.</p></article>
-        <article class="pt"><h4>Their questions</h4><p>Taste and sugar come up most in your reviews. We mix one on camera, react honestly, and answer sugar with your own line: less sugar than a single grape.</p></article>
-        <article class="pt"><h4>Their season</h4><p>Rivals sell summer, heat and festivals. Your live lands as party season and Christmas shopping begin, and none of them speaks to either yet.</p></article>
-      </div>
-      <p class="plan-note"><b>The space is open.</b> Big names like Berocca and Dioralyte have no UK TikTok account we could find, and the biggest UK hydration account we found has 22,300 followers. On TikTok, the category is still up for grabs.</p>
-      <p class="src">As of October 2026.</p>
-    </section>
-    <section class="plan-page" aria-labelledby="pOffer">
-      <p class="sec-mark"><span class="sec-no">03</span><span class="sec-label mono">The offer</span></p>
-      <h3 class="plan-h" id="pOffer">Low prices are everywhere. This offer isn't.</h3>
-      <p class="lede">You're planning your lowest price anywhere for the day. But in Black Friday season every brand has a low price, and your website already gives free delivery over £15 and a free tube at £19.99. So we add extras that cost you little, feel like a lot, and only the live has.</p>
-      <div class="offer">
-        <div class="offer-stack">
-          <h4>The hero offer, only on the live</h4>
-          <ul>
-            <li><span>The winter bundle: your bestselling 3-in-1 (over 2,000 sold on TikTok Shop when we looked) plus Immune+ for the season.</span><b>TikTok only</b></li>
-            <li><span>Two tubes of other flavours, so people try something new.</span><b>Free</b></li>
-            <li><span>The Phizz bottle, which isn't on sale anywhere.</span><b>Free</b></li>
-            <li><span>Delivery, with no minimum spend.</span><b>Free</b></li>
-          </ul>
-          <p>List the bundle a week or two early, so TikTok shows the full price struck through on the day, with the total value right next to it.</p>
-        </div>
-        <div class="ladder">
-          <h4>Three ways in</h4>
-          <ol>
-            <li><b>Try it</b><span>A single tube at a first-time price, for viewers new to Phizz.</span></li>
-            <li><b>Stock up</b><span>The winter bundle. Anyone who has already bought can add a second for less, for ten minutes only.</span></li>
-            <li class="is-locked"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><b>Never run out</b><span>Subscribe and save, so first-time buyers become monthly customers. In the full plan.</span></li>
-          </ol>
-        </div>
-      </div>
-    </section>
-    <section class="plan-page" aria-labelledby="pIdeas">
-      <p class="sec-mark"><span class="sec-no">04</span><span class="sec-label mono">Three ideas</span></p>
-      <h3 class="plan-h" id="pIdeas">Three ideas to stop the scroll.</h3>
-      <p class="lede">First thoughts, ahead of seeing your brand personas. We'll shape them with your team.</p>
-    <div class="ideas-grid">
-      <article class="idea" data-fizz><span class="n">01</span><h3>The fizz is the clock.</h3><p>Every flash deal starts with a tablet dropped into a glass. When the fizz stops, the deal's gone. A countdown viewers can see and hear.</p></article>
-      <article class="idea"><span class="n">02</span><h3>From the skies to your feed.</h3><p>Phizz flies with Emirates. We tell that story on air, then hand viewers the same tablets in a TikTok-only bundle.</p></article>
-      <article class="idea"><span class="n">03</span><h3>Open the office.</h3><p>A quiet Monday at Liverpool Street becomes a behind-the-scenes tour. Anyone from your team who fancies it drops in for five minutes. Nobody has to, but viewers love meeting the people behind a brand.</p></article>
-    </div>
-    <p class="swipe-hint mono" id="swipeHint" aria-hidden="true">01 / 03 · Swipe for more</p>
-    </section>
-    <section class="plan-page" aria-labelledby="pFull">
-      <p class="sec-mark"><span class="sec-no">05</span><span class="sec-label mono">The full plan</span></p>
-      <h3 class="plan-h" id="pFull">The rest unlocks when we go ahead.</h3>
-      <p class="lede">Here's what else the full plan covers. We'll take you through it, and build it with your team, once we're working together.</p>
-      <div class="care">
-        <div class="care-head"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h4>After-live care</h4></div>
-        <p class="care-lede">TikTok's dashboard gives you numbers. After every live, we tell you what they mean.</p>
-        <ul>
-          <li><b>The live</b><span>Sales, viewers, watch time and the exact moments people bought.</span></li>
-          <li><b>The presenters</b><span>Who kept viewers watching, and who turned them into buyers.</span></li>
-          <li><b>The words</b><span>The phrases, demos and deals that were on screen when sales jumped.</span></li>
-          <li><b>The pattern</b><span>What keeps working from one live to the next, so each live builds on the last.</span></li>
-        </ul>
-        <p class="care-foot">Every live gets better because of evidence, not guesswork.</p>
-      </div>
-      <div class="locks">
-        <article class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h4>Hour-by-hour run of show</h4><p>All six hours mapped out: when each deal drops, when the giveaways run and who is on camera.</p></article>
-        <article class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h4>The full deals plan</h4><p>Discount levels, flash sales and new-customer vouchers, priced around your margins.</p></article>
-        <article class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h4>Preheat content</h4><p>What you and your affiliates post from 24 hours to 1 hour before, so people are waiting when you go live.</p></article>
-        <article class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h4>Subscribe and save</h4><p>How to use TikTok Shop subscriptions to turn first-time buyers into monthly customers.</p></article>
-        <article class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h4>Competitor watch</h4><p>What similar brands are doing on TikTok Live, and how Phizz stands apart.</p></article>
-        <article class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h4>Crew and checklists</h4><p>Who does what before, during and after the live, so nothing gets missed.</p></article>
-      </div>
-      <div class="unlock"><h4>Ready for the full plan?</h4></div>
-    </section>
-  </div>
-</dialog>
 
 <!-- CLOSE -->
 <footer class="close" id="contact" aria-label="Gateshead Media">

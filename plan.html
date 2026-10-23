@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="icon" href="favicon.ico?v=2" sizes="any">
+<link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<meta name="theme-color" content="#F4F0E7">
+<title>Grand Opening plan · Gateshead Media × Phizz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap">
+<style>
+/* The Grand Opening plan as a document you read, not a pop-up of cards.
+   Read mode: a calm reading column, a contents rail that says where you are, content set in forms people already know
+   (a table for targets, a list for findings, a receipt for the offer, a contents list for what is locked).
+   Same palette and type as the pitch page. */
+:root{
+  --paper:#F4F0E7; --paper-2:#ECE5D7; --rust:#D45D15; --corten:#983E1B; --ink:#1B1613; --on-rust:#FBF6EE;
+  --muted:#655A50; --hair:rgba(27,22,19,.14); --hair-strong:rgba(27,22,19,.85);
+  --display:"Geist","Helvetica Neue",Arial,sans-serif;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+  --gutter:var(--s4); --measure:66ch;
+  --fs-body:17px; --fs-lead:21px; --fs-h3:21px; --fs-h2:clamp(30px,3.6vw,46px); --fs-h1:clamp(44px,7.4vw,96px);
+  --icon-disc:var(--rust); --icon-fig:var(--paper);
+  color-scheme:light;
+}
+@media (min-width:760px){:root{--gutter:var(--s6)}}
+@media (min-width:1200px){:root{--gutter:var(--s7);--fs-body:18px;--fs-lead:23px}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scrollbar-color:var(--corten) var(--paper-2);scroll-padding-top:var(--s6)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--display);font-size:var(--fs-body);line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;caret-color:var(--rust)}
+::selection{background:var(--rust);color:var(--on-rust)}
+h1,h2,h3,p,dl,dd,ol,ul,table,figure{margin:0}
+ol,ul{padding:0;list-style:none}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.22em}
+a:hover{color:var(--corten)}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px;border-radius:2px}
+svg{display:block}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:var(--gutter);top:-48px;padding:var(--s2) var(--s3);background:var(--ink);color:var(--on-rust);border-radius:4px;z-index:5}
+.skip:focus{top:var(--s3)}
+.wrap{max-width:calc(1120px + 2 * var(--gutter));margin:0 auto;padding:0 var(--gutter)}
+
+/* top bar: which site this is, and the way back */
+.top{border-bottom:1px solid var(--hair)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);min-height:64px}
+.brand{display:flex;align-items:center;gap:var(--s3);font-weight:700;letter-spacing:-.01em;color:var(--rust);text-decoration:none}
+.brand .icon{width:32px;height:32px}
+.back{display:inline-flex;align-items:center;gap:var(--s2);font-size:15px;font-weight:600;text-decoration:none;padding:var(--s2) 0}
+.back svg{width:18px;height:18px}
+.back:hover{text-decoration:underline}
+.top .back{min-height:44px}
+@media (max-width:399px){.top .long{display:none}}
+
+/* masthead: the title, what this is, and the facts of the day */
+.masthead{padding:var(--s8) 0 var(--s7);border-bottom:1px solid var(--hair)}
+h1{font-size:var(--fs-h1);font-weight:800;line-height:.95;letter-spacing:-.04em;color:var(--rust);max-width:12ch;text-wrap:balance}
+.dek{margin-top:var(--s5);font-size:var(--fs-lead);line-height:1.4;max-width:34ch}
+.facts{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s6);margin-top:var(--s6);font-weight:600}
+.facts li{display:flex;align-items:center;gap:var(--s3)}
+.facts svg{width:22px;height:22px;color:var(--corten);flex:none}
+
+/* body: reading column with the contents rail beside it on wide screens */
+.doc{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s7);padding:var(--s7) 0 var(--s9)}
+.toc{font-size:15px}
+.toc h2{font-size:15px;font-weight:700;letter-spacing:0;margin-bottom:var(--s3);color:var(--muted)}
+.toc ol{display:flex;flex-wrap:wrap;gap:0 var(--s5)}
+.toc a{text-decoration:none;font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+.toc a:hover{text-decoration:underline}
+@media (min-width:1080px){
+  .doc{grid-template-columns:minmax(0,1fr) 220px;column-gap:var(--s9);padding-top:var(--s8)}
+  .toc{grid-column:2;grid-row:1;position:sticky;top:var(--s6);align-self:start}
+  .toc ol{display:grid;gap:0;border-left:1px solid var(--hair)}
+  .toc a{display:block;min-height:0;padding:var(--s2) 0 var(--s2) var(--s4);margin-left:-1px;border-left:1px solid transparent;color:var(--muted);font-weight:500;transition:color .2s,border-color .2s}
+  .toc a:hover{color:var(--ink);text-decoration:none}
+  .toc a[aria-current="true"]{color:var(--rust);font-weight:600;border-left-color:var(--rust)}
+}
+.col{max-width:var(--measure);min-width:0}
+.lead{font-size:var(--fs-lead);line-height:1.45}
+.col section{padding-top:var(--s8);margin-top:var(--s8);border-top:1px solid var(--hair-strong)}
+.col section:first-of-type{margin-top:var(--s8)}
+@media (min-width:1080px){.col section{padding-top:var(--s7)}}
+h2{font-size:var(--fs-h2);font-weight:700;line-height:1.05;letter-spacing:-.035em;text-wrap:balance;max-width:20ch}
+h3{font-size:var(--fs-h3);font-weight:700;line-height:1.25;letter-spacing:-.015em;margin-top:var(--s7)}
+.col section > p, .col section > .block{margin-top:var(--s4)}
+.col section > h2 + p{margin-top:var(--s5)}
+.col h3 + *{margin-top:var(--s3)}
+.note{font-size:14px;color:var(--muted)}
+
+/* targets: a two-column table */
+.targets{width:100%;border-collapse:collapse;margin-top:var(--s5)}
+.targets th,.targets td{text-align:left;vertical-align:baseline;padding:var(--s3) 0;border-bottom:1px solid var(--hair)}
+.targets tr:first-child th,.targets tr:first-child td{border-top:1px solid var(--hair)}
+.targets th{font-weight:500;color:var(--muted);width:42%;padding-right:var(--s4)}
+.targets td{font-weight:600}
+
+/* findings: term, then what it means */
+.findings{margin-top:var(--s5);border-top:1px solid var(--hair)}
+.findings div{padding:var(--s4) 0;border-bottom:1px solid var(--hair)}
+.findings dt{font-weight:700}
+.findings dd{margin-top:var(--s1)}
+@media (min-width:760px){.findings div{display:grid;grid-template-columns:11rem minmax(0,1fr);column-gap:var(--s5)}.findings dd{margin-top:0}}
+
+/* the offer: set like a receipt */
+.receipt{width:100%;border-collapse:collapse;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.receipt th,.receipt td{padding:var(--s3) 0;vertical-align:baseline;border-bottom:1px dashed var(--hair)}
+.receipt tr:last-child th,.receipt tr:last-child td{border-bottom:0}
+.receipt th{text-align:left;font-weight:400;padding-right:var(--s5)}
+.receipt td{text-align:right;font-weight:700;color:var(--corten);white-space:nowrap}
+.steps{counter-reset:step;border-top:1px solid var(--hair)}
+.steps li{counter-increment:step;display:grid;grid-template-columns:2rem minmax(0,1fr);column-gap:var(--s3);padding:var(--s3) 0;border-bottom:1px solid var(--hair)}
+.steps li::before{content:counter(step);font-weight:700;color:var(--rust);font-variant-numeric:tabular-nums}
+.steps li.locked{color:var(--muted)}
+.steps li.locked::before{content:"";width:18px;height:18px;margin-top:4px;background:currentColor;
+  -webkit-mask:var(--lock) center/contain no-repeat;mask:var(--lock) center/contain no-repeat}
+:root{--lock:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Crect x='5' y='10.5' width='14' height='10' rx='2.5'/%3E%3Cpath d='M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5'/%3E%3C/svg%3E")}
+.tag{white-space:nowrap;font-size:14px;font-weight:600;color:var(--corten)}
+
+/* three ideas: headed paragraphs, nothing boxed */
+.ideas h3:first-child{margin-top:var(--s6)}
+.ideas p{margin-top:var(--s2)}
+
+/* after-live care: the one block that stands apart */
+.care{margin-top:var(--s6);background:var(--ink);color:var(--on-rust);padding:var(--s6) var(--s5)}
+@media (min-width:760px){.care{padding:var(--s7);margin-left:calc(-1 * var(--s7));margin-right:calc(-1 * var(--s7))}}
+.care h3{margin-top:0;color:var(--rust);font-size:clamp(24px,2.4vw,30px);letter-spacing:-.025em}
+.care-lead{margin-top:var(--s3);font-size:var(--fs-lead);line-height:1.4;max-width:34ch}
+.care dl{margin-top:var(--s6);border-top:1px solid rgba(251,246,238,.2)}
+.care dl div{padding:var(--s3) 0;border-bottom:1px solid rgba(251,246,238,.2)}
+.care dt{font-weight:700}
+.care dd{color:#D9D1C4}
+@media (min-width:760px){.care dl div{display:grid;grid-template-columns:9rem minmax(0,1fr);column-gap:var(--s5)}}
+.care-foot{margin-top:var(--s5);font-weight:600}
+
+/* what else is in the full plan: a contents list with locks */
+.locked-list{border-top:1px solid var(--hair)}
+.locked-list li{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:var(--s3);padding:var(--s4) 0;border-bottom:1px solid var(--hair)}
+.locked-list svg{width:20px;height:20px;margin-top:3px;color:var(--corten)}
+.locked-list b{display:block;font-weight:700}
+.locked-list span{color:var(--muted)}
+
+/* the close */
+.ask{margin-top:var(--s9);padding-top:var(--s6);border-top:2px solid var(--ink);font-size:var(--fs-h2);font-weight:700;line-height:1.05;letter-spacing:-.035em;color:var(--rust)}
+.end{margin-top:var(--s6)}
+</style>
+</head>
+<body>
+<a class="skip" href="#plan">Skip to the plan</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><svg aria-hidden="true" focusable="false" viewBox="-372.6 -356.0 745.1 745.1" xmlns="http://www.w3.org/2000/svg" class="icon"><path d="M-372.6 16.5C-372.6 222.3 -205.8 389.1 0 389.1C205.8 389.1 372.6 222.3 372.6 16.5C372.6 -189.2 205.8 -356 0 -356C-205.8 -356 -372.6 -189.2 -372.6 16.5Z" style="fill:var(--icon-disc)"></path><path d="M38.8 387.1C26.1 388.4 13.1 389.1 0 389.1C-13.1 389.1 -26.1 388.4 -38.8 387.1L-39.2 382.6L-39.8 373.1L-40.5 363.6L-41.2 354.1L-41.7 344.6L-42.1 335.2L-42.6 325.7L-43 316.2L-43.5 306.8L-43.9 297.3L-44.4 287.9L-44.9 278.5L-45.8 269.1L-46.7 259.6L-47.6 250.2L-48.5 240.8L-49.5 231.4L-50.4 222L-51.4 212.7L-52.3 203.3L-53.3 193.9L-55.2 175.2L-56.2 165.8L-57.1 156.5L-56.8 147.2L-55.3 137.8L-53.7 128.5L-52.1 119.2L-50.5 109.9L-50.6 100.6L-51.2 91.3L-51.8 82L-52.5 72.7L-53.1 63.4L-53.9 54.1L-55.4 44.9L-56.9 35.6L-58.5 26.4L-60 17.1L-61.5 7.9L-63 -1.3L-64.6 -10.6L-65.6 -19.8L-66.6 -29L-67.6 -38.2L-68.6 -47.4L-69.6 -56.6L-70.6 -65.8L-71.6 -74.9L-71.3 -84.1L-70.5 -93.3L-69.8 -102.4L-69.1 -111.6L-68.3 -120.7L-67.9 -121.5L-59.6 -130.6L-45.8 -139.6L-33.2 -148.7L-25.7 -157.7L-22.8 -166.4L-22.8 -175.5L-22.6 -176L-22 -176.4L-21.1 -176.9L-20.4 -177.2L-23.1 -179.8L-26.8 -184.6L-27.3 -185.3L-30.5 -190.8L-33.2 -196.9L-35.2 -203.5L-36.5 -210.4L-37.2 -217.5L-37.3 -218.6L-37.3 -225.7L-36.6 -232.8L-35.2 -239.7L-33.2 -246.3L-30.5 -252.4L-30 -253.3L-26.9 -258.7L-23.2 -263.4L-19.1 -267.4L-18.4 -268L-14.1 -270.9L-13.3 -271.4L-9 -273.2L-8.3 -273.5L-7.5 -273.8L-6.5 -274L-5.4 -274.2L-2.7 -274.6L-2.1 -274.7L-1.5 -274.8L-0.8 -274.8L-0.2 -274.8L0.5 -274.8L1.2 -274.8L1.8 -274.7L2.5 -274.7L4.9 -274.3L6 -274.1L7 -273.9L7.9 -273.7L8.7 -273.4L12.9 -271.6L13.7 -271.1L17.9 -268.3L18.8 -267.7L22.8 -263.8L23.4 -263.1L27.1 -258.3L30.3 -252.8L33 -246.8L35 -240.3L35.3 -239.2L36.6 -232.3L37.3 -225.2L37.4 -218L36.7 -210.9L35.3 -204L33.3 -197.4L32.9 -196.5L30.3 -190.4L27.1 -184.9L23.4 -180.1L20.4 -177.2L21.1 -176.9L22 -176.4L22.6 -176L22.8 -175.5L22.8 -166.4L25.7 -157.7L33.2 -148.7L45.8 -139.6L59.6 -130.6L67.9 -121.5L68.3 -120.7L69.1 -111.6L70.5 -93.3L71.3 -84.1L71.6 -74.9L70.6 -65.8L68.6 -47.4L67.6 -38.2L65.6 -19.8L64.6 -10.6L61.5 7.9L53.9 54.1L53.1 63.4L51.2 91.3L50.6 100.6L50.5 109.9L52.1 119.2L53.7 128.5L55.3 137.8L56.8 147.2L57.1 156.5L56.2 165.8L55.2 175.2L53.3 193.9L52.3 203.3L51.4 212.7L50.4 222L49.5 231.4L48.5 240.8L47.6 250.2L46.7 259.6L45.8 269.1L44.9 278.5L44.4 287.9L43.9 297.3L43.5 306.8L43 316.2L42.6 325.7L42.1 335.2L41.7 344.6L41.2 354.1L40.5 363.6L39.8 373.1L39.2 382.6L38.8 387.1ZM337.7 -141.1C359.9 -93.5 372.4 -40.4 372.6 15.6L68.2 17.1L69.5 9.2L72.6 -9.2Q72.6 -9.4 72.6 -9.7L73.7 -18.9L75.7 -37.3L76.7 -46.5L78.7 -64.9L79.7 -74.1Q79.7 -74.7 79.7 -75.2L79.4 -84.4Q79.4 -84.6 79.4 -84.8L77.2 -112.2L76.4 -121.4Q76.3 -123.3 75.3 -125L74.8 -125.7Q74.4 -126.3 73.9 -126.9L65.5 -136Q64.9 -136.8 64 -137.3L62.1 -138.6L337.7 -141.1ZM-372.6 15.6C-372.4 -40.4 -359.9 -93.5 -337.7 -141.1L-62.1 -138.6L-64 -137.3Q-64.9 -136.8 -65.5 -136L-73.9 -126.9Q-74.4 -126.3 -74.8 -125.7L-75.3 -125Q-76.3 -123.3 -76.4 -121.4L-77.2 -112.2L-77.9 -103.1L-78.6 -93.9L-79.4 -84.8Q-79.4 -84.6 -79.4 -84.4L-79.7 -75.2Q-79.7 -74.7 -79.7 -74.1L-78.7 -64.9L-77.7 -55.7L-76.7 -46.5L-75.7 -37.3L-74.7 -28.1L-73.7 -18.9L-72.6 -9.7Q-72.6 -9.4 -72.6 -9.2L-71 -0L-69.5 9.2L-68.2 17.1L-372.6 15.6Z" style="fill:var(--icon-fig)"></path></svg><span>Gateshead Media</span></a>
+    <a class="back" href="./"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>Back<span class="long">&nbsp;to the pitch</span></a>
+  </div>
+</header>
+
+<main id="plan">
+  <div class="wrap">
+    <header class="masthead">
+      <h1>Grand Opening plan</h1>
+      <p class="dek">A free preview of how we'd run Phizz's first TikTok live.</p>
+      <ul class="facts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span><span class="sr">When: </span>Monday 16&nbsp;November, <span style="white-space:nowrap">12:00 to 18:00</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span><span class="sr">Where: </span>Phizz office, Liverpool Street, London</span></li>
+      </ul>
+    </header>
+
+    <div class="doc">
+      <nav class="toc" aria-labelledby="tocTitle">
+        <h2 id="tocTitle">In this plan</h2>
+        <ol>
+          <li><a href="#goal">The goal</a></li>
+          <li><a href="#audience">Who it's for</a></li>
+          <li><a href="#offer">The offer</a></li>
+          <li><a href="#ideas">Three ideas</a></li>
+          <li><a href="#full">The full plan</a></li>
+        </ol>
+      </nav>
+
+      <article class="col">
+        <p class="lead">You told us this is your first live, and that more lives depend on how it goes. So the plan does two jobs: sell well on 16&nbsp;November, and show you clearly whether TikTok deserves more of your time. This is a free preview. The full plan unlocks when we go ahead together.</p>
+
+        <section id="goal" aria-labelledby="goalTitle">
+          <h2 id="goalTitle">Beat £10,000 on the day.</h2>
+          <p>Emma at TikTok told us health brands usually make about £10,000 on their grand opening day, with around half from the live. That's the bar. We're planning to clear it.</p>
+          <table class="targets">
+            <caption class="sr">What we're aiming for</caption>
+            <tbody>
+              <tr><th scope="row">Across the day</th><td>More than £10,000</td></tr>
+              <tr><th scope="row">From the six hours live</th><td>More than £5,000</td></tr>
+              <tr><th scope="row">Afterwards</th><td>What sold, when and why, so deciding on more lives is easy either way</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="audience" aria-labelledby="audienceTitle">
+          <h2 id="audienceTitle">Busy adults. One easy habit.</h2>
+          <p>Your website speaks to working parents, commuters who train before work, nurses on long shifts and frequent travellers. Your reviews show the same people buying. Three things we found shape the live.</p>
+          <dl class="findings">
+            <div><dt>Their moments</dt><dd>The school run, a workout before work, a long shift, a flight. We sell Phizz in the moments your own site names, not as a list of ingredients.</dd></div>
+            <div><dt>Their questions</dt><dd>Taste and sugar come up most in your reviews. We mix one on camera, react honestly, and answer sugar with your own line: less sugar than a single grape.</dd></div>
+            <div><dt>Their season</dt><dd>Rivals sell summer, heat and festivals. Your live lands as party season and Christmas shopping begin, and none of them speaks to either yet.</dd></div>
+          </dl>
+          <p><strong>The space is open.</strong> Big names like Berocca and Dioralyte have no UK TikTok account we could find, and the biggest UK hydration account we found has 22,300 followers. On TikTok, the category is still up for grabs.</p>
+          <p class="note">As of October 2026.</p>
+        </section>
+
+        <section id="offer" aria-labelledby="offerTitle">
+          <h2 id="offerTitle">Low prices are everywhere. This offer isn't.</h2>
+          <p>You're planning your lowest price anywhere for the day. But in Black Friday season every brand has a low price, and your website already gives free delivery over £15 and a free tube at £19.99. So we add extras that cost you little, feel like a lot, and only the live has.</p>
+          <h3>The hero offer, only on the live</h3>
+          <table class="receipt">
+            <caption class="sr">What is in the hero offer</caption>
+            <tbody>
+              <tr><th scope="row">The winter bundle: your bestselling 3-in-1 (over 2,000 sold on TikTok Shop when we looked) plus Immune+ for the season.</th><td>TikTok only</td></tr>
+              <tr><th scope="row">Two tubes of other flavours, so people try something new.</th><td>Free</td></tr>
+              <tr><th scope="row">The Phizz bottle, which isn't on sale anywhere.</th><td>Free</td></tr>
+              <tr><th scope="row">Delivery, with no minimum spend.</th><td>Free</td></tr>
+            </tbody>
+          </table>
+          <p class="block">List the bundle a week or two early, so TikTok shows the full price struck through on the day, with the total value right next to it.</p>
+          <h3>Three ways in</h3>
+          <ol class="steps">
+            <li><span><strong>Try it.</strong> A single tube at a first-time price, for viewers new to Phizz.</span></li>
+            <li><span><strong>Stock up.</strong> The winter bundle. Anyone who has already bought can add a second for less, for ten minutes only.</span></li>
+            <li class="locked"><span><strong>Never run out.</strong> Subscribe and save, so first-time buyers become monthly customers. <span class="tag">In the full plan</span></span></li>
+          </ol>
+        </section>
+
+        <section id="ideas" aria-labelledby="ideasTitle">
+          <h2 id="ideasTitle">Three ideas to stop the scroll.</h2>
+          <p>First thoughts, ahead of seeing your brand personas. We'll shape them with your team.</p>
+          <div class="ideas">
+            <h3>The fizz is the clock.</h3>
+            <p>Every flash deal starts with a tablet dropped into a glass. When the fizz stops, the deal's gone. A countdown viewers can see and hear.</p>
+            <h3>From the skies to your feed.</h3>
+            <p>Phizz flies with Emirates. We tell that story on air, then hand viewers the same tablets in a TikTok-only bundle.</p>
+            <h3>Open the office.</h3>
+            <p>A quiet Monday at Liverpool Street becomes a behind-the-scenes tour. Anyone from your team who fancies it drops in for five minutes. Nobody has to, but viewers love meeting the people behind a brand.</p>
+          </div>
+        </section>
+
+        <section id="full" aria-labelledby="fullTitle">
+          <h2 id="fullTitle">The rest unlocks when we go ahead.</h2>
+          <p>Here's what else the full plan covers. We'll take you through it, and build it with your team, once we're working together.</p>
+          <div class="care">
+            <h3>After-live care</h3>
+            <p class="care-lead">TikTok's dashboard gives you numbers. After every live, we tell you what they mean.</p>
+            <dl>
+              <div><dt>The live</dt><dd>Sales, viewers, watch time and the exact moments people bought.</dd></div>
+              <div><dt>The presenters</dt><dd>Who kept viewers watching, and who turned them into buyers.</dd></div>
+              <div><dt>The words</dt><dd>The phrases, demos and deals that were on screen when sales jumped.</dd></div>
+              <div><dt>The pattern</dt><dd>What keeps working from one live to the next, so each live builds on the last.</dd></div>
+            </dl>
+            <p class="care-foot">Every live gets better because of evidence, not guesswork.</p>
+          </div>
+          <h3>Also in the full plan</h3>
+          <ul class="locked-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Hour-by-hour run of show</b><span>All six hours mapped out: when each deal drops, when the giveaways run and who is on camera.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>The full deals plan</b><span>Discount levels, flash sales and new-customer vouchers, priced around your margins.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Preheat content</b><span>What you and your affiliates post from 24 hours to 1 hour before, so people are waiting when you go live.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Subscribe and save</b><span>How to use TikTok Shop subscriptions to turn first-time buyers into monthly customers.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Competitor watch</b><span>What similar brands are doing on TikTok Live, and how Phizz stands apart.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Crew and checklists</b><span>Who does what before, during and after the live, so nothing gets missed.</span></div></li>
+          </ul>
+        </section>
+
+        <p class="ask">Ready for the full plan?</p>
+        <p class="end"><a class="back" href="./"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>Back to the pitch</a></p>
+      </article>
+    </div>
+  </div>
+</main>
+
+<script>
+/* contents rail: mark the section being read */
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var map={}; links.forEach(function(a){ map[a.getAttribute('href').slice(1)]=a; });
+  var secs=[].slice.call(document.querySelectorAll('.col section[id]'));
+  if(!('IntersectionObserver' in window)||!secs.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){
+    links.forEach(function(l){ l.removeAttribute('aria-current'); }); var a=map[e.target.id]; if(a) a.setAttribute('aria-current','true'); } }); },
+    {rootMargin:'-30% 0px -60% 0px'});
+  secs.forEach(function(s){ io.observe(s); });
+})();
+</script>
+</body>
+</html>
