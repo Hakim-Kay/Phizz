@@ -13,140 +13,160 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap">
 <style>
-/* The Grand Opening plan as a document you read, not a pop-up of cards.
-   Read mode: a calm reading column, a contents rail that says where you are, content set in forms people already know
-   (a table for targets, a list for findings, a receipt for the offer, a contents list for what is locked).
-   Same palette and type as the pitch page. */
+/* The Grand Opening plan, version 3: room to breathe, and nothing longer than a reader can take in at once.
+   - Context first, then a summary that doubles as the contents (Grammarly-style "at a glance").
+   - Each section is a split: the conclusion on the left, staying in view while you read; the detail on the right
+     (AI in Design Report chapter openers, Craft Agency process rows).
+   - Detail is broken into chunks of one idea each: a figure, a short list, a sentence (Miller's law; Weinschenk:
+     "break text up into chunks"), with one standout per section at most (Von Restorff).
+   - Space does the separating, not boxes (Refactoring UI: start with too much white space, use fewer borders). */
 :root{
   --paper:#F4F0E7; --paper-2:#ECE5D7; --rust:#D45D15; --corten:#983E1B; --ink:#1B1613; --on-rust:#FBF6EE;
-  --muted:#655A50; --hair:rgba(27,22,19,.14); --hair-strong:rgba(27,22,19,.85);
+  --muted:#655A50; --hair:rgba(27,22,19,.14);
   --display:"Geist","Helvetica Neue",Arial,sans-serif;
-  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
-  --gutter:var(--s4); --measure:66ch;
-  --fs-body:17px; --fs-lead:21px; --fs-h3:21px; --fs-h2:clamp(30px,3.6vw,46px); --fs-h1:clamp(44px,7.4vw,96px);
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px; --s10:128px;
+  --gutter:20px; --section:var(--s9); --chunk:var(--s7);
+  --fs-body:17px; --fs-lead:21px; --fs-h3:20px; --fs-h2:clamp(30px,3.4vw,46px); --fs-h1:clamp(46px,7.4vw,104px); --fs-fig:clamp(44px,5vw,68px);
   --icon-disc:var(--rust); --icon-fig:var(--paper);
   color-scheme:light;
 }
-@media (min-width:760px){:root{--gutter:var(--s6)}}
-@media (min-width:1200px){:root{--gutter:var(--s7);--fs-body:18px;--fs-lead:23px}}
+@media (min-width:760px){:root{--gutter:var(--s6);--section:var(--s10)}}
+@media (min-width:1200px){:root{--gutter:var(--s7);--fs-body:18px;--fs-lead:24px;--chunk:var(--s8)}}
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scrollbar-color:var(--corten) var(--paper-2);scroll-padding-top:var(--s6)}
+html{-webkit-text-size-adjust:100%;scrollbar-color:var(--corten) var(--paper-2)}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--display);font-size:var(--fs-body);line-height:1.6;
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--display);font-size:var(--fs-body);line-height:1.65;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;caret-color:var(--rust)}
 ::selection{background:var(--rust);color:var(--on-rust)}
-h1,h2,h3,p,dl,dd,ol,ul,table,figure{margin:0}
+h1,h2,h3,p,dl,dd,ol,ul,figure{margin:0}
 ol,ul{padding:0;list-style:none}
 a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.22em}
-a:hover{color:var(--corten)}
 :focus-visible{outline:2px solid var(--rust);outline-offset:3px;border-radius:2px}
 svg{display:block}
+strong{font-weight:700}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .skip{position:absolute;left:var(--gutter);top:-48px;padding:var(--s2) var(--s3);background:var(--ink);color:var(--on-rust);border-radius:4px;z-index:5}
 .skip:focus{top:var(--s3)}
-.wrap{max-width:calc(1120px + 2 * var(--gutter));margin:0 auto;padding:0 var(--gutter)}
+.wrap{max-width:calc(1160px + 2 * var(--gutter));margin:0 auto;padding:0 var(--gutter)}
 
 /* top bar: which site this is, and the way back */
 .top{border-bottom:1px solid var(--hair)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);min-height:64px}
 .brand{display:flex;align-items:center;gap:var(--s3);font-weight:700;letter-spacing:-.01em;color:var(--rust);text-decoration:none}
 .brand .icon{width:32px;height:32px}
-.back{display:inline-flex;align-items:center;gap:var(--s2);font-size:15px;font-weight:600;text-decoration:none;padding:var(--s2) 0}
+.back{display:inline-flex;align-items:center;gap:var(--s2);min-height:44px;font-size:15px;font-weight:600;text-decoration:none}
 .back svg{width:18px;height:18px}
 .back:hover{text-decoration:underline}
-.top .back{min-height:44px}
 @media (max-width:399px){.top .long{display:none}}
 
-/* masthead: the title, what this is, and the facts of the day */
-.masthead{padding:var(--s8) 0 var(--s7);border-bottom:1px solid var(--hair)}
-h1{font-size:var(--fs-h1);font-weight:800;line-height:.95;letter-spacing:-.04em;color:var(--rust);max-width:12ch;text-wrap:balance}
-.dek{margin-top:var(--s5);font-size:var(--fs-lead);line-height:1.4;max-width:34ch}
-.facts{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s6);margin-top:var(--s6);font-weight:600}
+/* opening: the title, what this is, the facts of the day, then why it exists */
+.masthead{padding:var(--s9) 0 var(--s8)}
+@media (min-width:760px){.masthead{padding:var(--s10) 0 var(--s9)}}
+h1{font-size:var(--fs-h1);font-weight:800;line-height:.92;letter-spacing:-.04em;color:var(--rust);max-width:11ch;text-wrap:balance}
+.dek{margin-top:var(--s6);font-size:var(--fs-lead);line-height:1.4;max-width:30ch}
+.facts{display:flex;flex-wrap:wrap;gap:var(--s4) var(--s7);margin-top:var(--s7);font-weight:600}
 .facts li{display:flex;align-items:center;gap:var(--s3)}
 .facts svg{width:22px;height:22px;color:var(--corten);flex:none}
+.lead{font-size:var(--fs-lead);line-height:1.5;max-width:40ch;padding-top:var(--s8);border-top:1px solid var(--hair)}
+@media (min-width:1000px){.lead{max-width:44ch}}
 
-/* body: reading column with the contents rail beside it on wide screens */
-.doc{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s7);padding:var(--s7) 0 var(--s9)}
-.toc{font-size:15px}
-.toc h2{font-size:15px;font-weight:700;letter-spacing:0;margin-bottom:var(--s3);color:var(--muted)}
-.toc ol{display:flex;flex-wrap:wrap;gap:0 var(--s5)}
-.toc a{text-decoration:none;font-weight:600;display:inline-flex;align-items:center;min-height:44px}
-.toc a:hover{text-decoration:underline}
-@media (min-width:1080px){
-  .doc{grid-template-columns:minmax(0,1fr) 220px;column-gap:var(--s9);padding-top:var(--s8)}
-  .toc{grid-column:2;grid-row:1;position:sticky;top:var(--s6);align-self:start}
-  .toc ol{display:grid;gap:0;border-left:1px solid var(--hair)}
-  .toc a{display:block;min-height:0;padding:var(--s2) 0 var(--s2) var(--s4);margin-left:-1px;border-left:1px solid transparent;color:var(--muted);font-weight:500;transition:color .2s,border-color .2s}
-  .toc a:hover{color:var(--ink);text-decoration:none}
-  .toc a[aria-current="true"]{color:var(--rust);font-weight:600;border-left-color:var(--rust)}
+/* at a glance: one line per section, and each line takes you there */
+.glance{margin-top:var(--section)}
+.glance h2{font-size:var(--fs-h3);font-weight:700;letter-spacing:-.015em}
+.glance ol{margin-top:var(--s5);border-top:1px solid var(--ink)}
+.glance a{display:grid;grid-template-columns:minmax(0,1fr) 20px;column-gap:var(--s4);align-items:center;padding:var(--s5) 0;border-bottom:1px solid var(--hair);text-decoration:none}
+.glance a b{display:block;font-size:15px;font-weight:600;color:var(--corten)}
+.glance a .line{display:block;margin-top:var(--s1);font-size:var(--fs-lead);line-height:1.35;letter-spacing:-.01em}
+.glance a svg{width:20px;height:20px;color:var(--corten);transition:transform .25s ease}
+.glance a:hover .line{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+.glance a:hover svg{transform:translateY(3px)}
+/* phones: name above its line, arrow on the right; wider: name, line and arrow on one row */
+.glance a{grid-template-areas:"label arrow" "line arrow"}
+.glance a > span:first-child{grid-area:label}
+.glance a .line{grid-area:line}
+.glance a svg{grid-area:arrow}
+@media (min-width:760px){
+  .glance a{grid-template-columns:11rem minmax(0,1fr) 20px;grid-template-areas:"label line arrow"}
+  .glance a .line{margin-top:0}
 }
-.col{max-width:var(--measure);min-width:0}
-.lead{font-size:var(--fs-lead);line-height:1.45}
-.col section{padding-top:var(--s8);margin-top:var(--s8);border-top:1px solid var(--hair-strong)}
-.col section:first-of-type{margin-top:var(--s8)}
-@media (min-width:1080px){.col section{padding-top:var(--s7)}}
-h2{font-size:var(--fs-h2);font-weight:700;line-height:1.05;letter-spacing:-.035em;text-wrap:balance;max-width:20ch}
-h3{font-size:var(--fs-h3);font-weight:700;line-height:1.25;letter-spacing:-.015em;margin-top:var(--s7)}
-.col section > p, .col section > .block{margin-top:var(--s4)}
-.col section > h2 + p{margin-top:var(--s5)}
-.col h3 + *{margin-top:var(--s3)}
+
+/* sections: the conclusion on the left stays in view, the detail sits on the right in short chunks */
+.sec{display:grid;grid-template-columns:minmax(0,1fr);row-gap:var(--s6);margin-top:var(--section);padding-top:var(--s7);border-top:1px solid var(--hair);scroll-margin-top:var(--s5)}
+.sec-head h2{font-size:var(--fs-h2);font-weight:700;line-height:1.04;letter-spacing:-.035em;text-wrap:balance;max-width:14ch}
+@media (min-width:1000px){
+  .sec{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:var(--s9);padding-top:var(--s8)}
+  .sec-head{position:sticky;top:var(--s6);align-self:start}
+}
+.sec-body{max-width:58ch;min-width:0}
+.sec-body > * + *{margin-top:var(--s5)}
+.sec-body > .chunk{margin-top:var(--chunk)}
+.sec-body > .chunk:first-child{margin-top:0}
+h3{font-size:var(--fs-h3);font-weight:700;line-height:1.3;letter-spacing:-.015em}
+h3 + *{margin-top:var(--s4)}
 .note{font-size:14px;color:var(--muted)}
+.rows{border-top:1px solid var(--hair)}
+.rows > li,.rows > div{padding:var(--s4) 0;border-bottom:1px solid var(--hair)}
 
-/* targets: a two-column table */
-.targets{width:100%;border-collapse:collapse;margin-top:var(--s5)}
-.targets th,.targets td{text-align:left;vertical-align:baseline;padding:var(--s3) 0;border-bottom:1px solid var(--hair)}
-.targets tr:first-child th,.targets tr:first-child td{border-top:1px solid var(--hair)}
-.targets th{font-weight:500;color:var(--muted);width:42%;padding-right:var(--s4)}
-.targets td{font-weight:600}
+/* the goal: two figures to remember, then what you get afterwards */
+.figures{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s6);padding-top:var(--s5);border-top:1px solid var(--ink)}
+@media (min-width:480px){.figures{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s6)}}
+.fig b{display:block;font-size:var(--fs-fig);font-weight:700;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.fig span{display:block;margin-top:var(--s3);color:var(--muted);line-height:1.4}
 
-/* findings: term, then what it means */
-.findings{margin-top:var(--s5);border-top:1px solid var(--hair)}
-.findings div{padding:var(--s4) 0;border-bottom:1px solid var(--hair)}
+/* who it's for: the four people, then the three findings */
+.people{display:grid;grid-template-columns:1fr;border-top:1px solid var(--hair)}
+.people li{padding:var(--s3) 0;border-bottom:1px solid var(--hair);font-weight:600}
+@media (min-width:560px){.people{grid-template-columns:1fr 1fr;column-gap:var(--s6)}}
 .findings dt{font-weight:700}
 .findings dd{margin-top:var(--s1)}
-@media (min-width:760px){.findings div{display:grid;grid-template-columns:11rem minmax(0,1fr);column-gap:var(--s5)}.findings dd{margin-top:0}}
+.standout{font-size:var(--fs-lead);line-height:1.45}
+.standout strong{color:var(--corten)}
 
-/* the offer: set like a receipt */
+/* the offer: why extras, the receipt, then the ways in */
+.reasons li{position:relative;padding-left:var(--s5)}
+.reasons li + li{margin-top:var(--s2)}
+.reasons li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--rust)}
 .receipt{width:100%;border-collapse:collapse;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
-.receipt th,.receipt td{padding:var(--s3) 0;vertical-align:baseline;border-bottom:1px dashed var(--hair)}
+.receipt th,.receipt td{padding:var(--s4) 0;vertical-align:baseline;border-bottom:1px dashed var(--hair)}
 .receipt tr:last-child th,.receipt tr:last-child td{border-bottom:0}
 .receipt th{text-align:left;font-weight:400;padding-right:var(--s5)}
 .receipt td{text-align:right;font-weight:700;color:var(--corten);white-space:nowrap}
+.receipt + .note{margin-top:var(--s4)}
 .steps{counter-reset:step;border-top:1px solid var(--hair)}
-.steps li{counter-increment:step;display:grid;grid-template-columns:2rem minmax(0,1fr);column-gap:var(--s3);padding:var(--s3) 0;border-bottom:1px solid var(--hair)}
+.steps li{counter-increment:step;display:grid;grid-template-columns:2rem minmax(0,1fr);column-gap:var(--s3);padding:var(--s4) 0;border-bottom:1px solid var(--hair)}
 .steps li::before{content:counter(step);font-weight:700;color:var(--rust);font-variant-numeric:tabular-nums}
 .steps li.locked{color:var(--muted)}
-.steps li.locked::before{content:"";width:18px;height:18px;margin-top:4px;background:currentColor;
+.steps li.locked::before{content:"";width:18px;height:18px;margin-top:5px;background:currentColor;
   -webkit-mask:var(--lock) center/contain no-repeat;mask:var(--lock) center/contain no-repeat}
 :root{--lock:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Crect x='5' y='10.5' width='14' height='10' rx='2.5'/%3E%3Cpath d='M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5'/%3E%3C/svg%3E")}
 .tag{white-space:nowrap;font-size:14px;font-weight:600;color:var(--corten)}
 
-/* three ideas: headed paragraphs, nothing boxed */
-.ideas h3:first-child{margin-top:var(--s6)}
-.ideas p{margin-top:var(--s2)}
+/* three ideas: a heading and two lines each, with air between */
+.idea + .idea{margin-top:var(--s7)}
+.idea p{margin-top:var(--s2)}
 
 /* after-live care: the one block that stands apart */
-.care{margin-top:var(--s6);background:var(--ink);color:var(--on-rust);padding:var(--s6) var(--s5)}
-@media (min-width:760px){.care{padding:var(--s7);margin-left:calc(-1 * var(--s7));margin-right:calc(-1 * var(--s7))}}
-.care h3{margin-top:0;color:var(--rust);font-size:clamp(24px,2.4vw,30px);letter-spacing:-.025em}
-.care-lead{margin-top:var(--s3);font-size:var(--fs-lead);line-height:1.4;max-width:34ch}
-.care dl{margin-top:var(--s6);border-top:1px solid rgba(251,246,238,.2)}
-.care dl div{padding:var(--s3) 0;border-bottom:1px solid rgba(251,246,238,.2)}
+.care{background:var(--ink);color:var(--on-rust);padding:var(--s7) var(--s5)}
+@media (min-width:760px){.care{padding:var(--s8) var(--s7)}}
+.care h3{color:var(--rust);font-size:clamp(24px,2.4vw,30px);letter-spacing:-.025em}
+.care-lead{margin-top:var(--s3);font-size:var(--fs-lead);line-height:1.4;max-width:30ch}
+.care dl{margin-top:var(--s7);border-top:1px solid rgba(251,246,238,.2)}
+.care dl div{padding:var(--s4) 0;border-bottom:1px solid rgba(251,246,238,.2)}
 .care dt{font-weight:700}
-.care dd{color:#D9D1C4}
-@media (min-width:760px){.care dl div{display:grid;grid-template-columns:9rem minmax(0,1fr);column-gap:var(--s5)}}
-.care-foot{margin-top:var(--s5);font-weight:600}
+.care dd{margin-top:var(--s1);color:#D9D1C4}
+.care-foot{margin-top:var(--s6);font-weight:600}
 
 /* what else is in the full plan: a contents list with locks */
 .locked-list{border-top:1px solid var(--hair)}
 .locked-list li{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:var(--s3);padding:var(--s4) 0;border-bottom:1px solid var(--hair)}
-.locked-list svg{width:20px;height:20px;margin-top:3px;color:var(--corten)}
+.locked-list svg{width:20px;height:20px;margin-top:4px;color:var(--corten)}
 .locked-list b{display:block;font-weight:700}
-.locked-list span{color:var(--muted)}
+.locked-list span{display:block;margin-top:2px;color:var(--muted)}
 
 /* the close */
-.ask{margin-top:var(--s9);padding-top:var(--s6);border-top:2px solid var(--ink);font-size:var(--fs-h2);font-weight:700;line-height:1.05;letter-spacing:-.035em;color:var(--rust)}
-.end{margin-top:var(--s6)}
+.close{margin-top:var(--section);padding:var(--s8) 0 var(--s10);border-top:2px solid var(--ink)}
+.ask{font-size:clamp(34px,4.6vw,64px);font-weight:700;line-height:1.02;letter-spacing:-.04em;color:var(--rust);max-width:14ch}
+.close .back{margin-top:var(--s6)}
 </style>
 </head>
 <body>
@@ -158,136 +178,144 @@ h3{font-size:var(--fs-h3);font-weight:700;line-height:1.25;letter-spacing:-.015e
   </div>
 </header>
 
-<main id="plan">
-  <div class="wrap">
-    <header class="masthead">
-      <h1>Grand Opening plan</h1>
-      <p class="dek">A free preview of how we'd run Phizz's first TikTok live.</p>
-      <ul class="facts">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span><span class="sr">When: </span>Monday 16&nbsp;November, <span style="white-space:nowrap">12:00 to 18:00</span></span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span><span class="sr">Where: </span>Phizz office, Liverpool Street, London</span></li>
-      </ul>
-    </header>
+<main id="plan" class="wrap">
+  <header class="masthead">
+    <h1>Grand Opening plan</h1>
+    <p class="dek">A free preview of how we'd run Phizz's first TikTok live.</p>
+    <ul class="facts">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span><span class="sr">When: </span>Monday 16&nbsp;November, <span style="white-space:nowrap">12:00 to 18:00</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span><span class="sr">Where: </span>Phizz office, Liverpool Street, London</span></li>
+    </ul>
+  </header>
 
-    <div class="doc">
-      <nav class="toc" aria-labelledby="tocTitle">
-        <h2 id="tocTitle">In this plan</h2>
-        <ol>
-          <li><a href="#goal">The goal</a></li>
-          <li><a href="#audience">Who it's for</a></li>
-          <li><a href="#offer">The offer</a></li>
-          <li><a href="#ideas">Three ideas</a></li>
-          <li><a href="#full">The full plan</a></li>
-        </ol>
-      </nav>
+  <p class="lead">You told us this is your first live, and that more lives depend on how it goes. So the plan does two jobs: sell well on 16&nbsp;November, and show you clearly whether TikTok deserves more of your time.</p>
 
-      <article class="col">
-        <p class="lead">You told us this is your first live, and that more lives depend on how it goes. So the plan does two jobs: sell well on 16&nbsp;November, and show you clearly whether TikTok deserves more of your time. This is a free preview. The full plan unlocks when we go ahead together.</p>
+  <nav class="glance" aria-labelledby="glanceTitle">
+    <h2 id="glanceTitle">At a glance</h2>
+    <ol>
+      <li><a href="#goal"><span><b>The goal</b></span><span class="line">Beat £10,000 on the day, and learn whether more lives are worth it.</span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></li>
+      <li><a href="#audience"><span><b>Who it's for</b></span><span class="line">Busy adults with an easy daily habit, met in the moments they already use Phizz.</span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></li>
+      <li><a href="#offer"><span><b>The offer</b></span><span class="line">A winter bundle and extras only the live has, rather than a deeper discount.</span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></li>
+      <li><a href="#ideas"><span><b>Three ideas</b></span><span class="line">The fizz as a countdown, the Emirates story, and an open office.</span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></li>
+      <li><a href="#full"><span><b>The full plan</b></span><span class="line">After-live care, plus six more parts we build with you.</span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></li>
+    </ol>
+  </nav>
 
-        <section id="goal" aria-labelledby="goalTitle">
-          <h2 id="goalTitle">Beat £10,000 on the day.</h2>
-          <p>Emma at TikTok told us health brands usually make about £10,000 on their grand opening day, with around half from the live. That's the bar. We're planning to clear it.</p>
-          <table class="targets">
-            <caption class="sr">What we're aiming for</caption>
-            <tbody>
-              <tr><th scope="row">Across the day</th><td>More than £10,000</td></tr>
-              <tr><th scope="row">From the six hours live</th><td>More than £5,000</td></tr>
-              <tr><th scope="row">Afterwards</th><td>What sold, when and why, so deciding on more lives is easy either way</td></tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section id="audience" aria-labelledby="audienceTitle">
-          <h2 id="audienceTitle">Busy adults. One easy habit.</h2>
-          <p>Your website speaks to working parents, commuters who train before work, nurses on long shifts and frequent travellers. Your reviews show the same people buying. Three things we found shape the live.</p>
-          <dl class="findings">
-            <div><dt>Their moments</dt><dd>The school run, a workout before work, a long shift, a flight. We sell Phizz in the moments your own site names, not as a list of ingredients.</dd></div>
-            <div><dt>Their questions</dt><dd>Taste and sugar come up most in your reviews. We mix one on camera, react honestly, and answer sugar with your own line: less sugar than a single grape.</dd></div>
-            <div><dt>Their season</dt><dd>Rivals sell summer, heat and festivals. Your live lands as party season and Christmas shopping begin, and none of them speaks to either yet.</dd></div>
-          </dl>
-          <p><strong>The space is open.</strong> Big names like Berocca and Dioralyte have no UK TikTok account we could find, and the biggest UK hydration account we found has 22,300 followers. On TikTok, the category is still up for grabs.</p>
-          <p class="note">As of October 2026.</p>
-        </section>
-
-        <section id="offer" aria-labelledby="offerTitle">
-          <h2 id="offerTitle">Low prices are everywhere. This offer isn't.</h2>
-          <p>You're planning your lowest price anywhere for the day. But in Black Friday season every brand has a low price, and your website already gives free delivery over £15 and a free tube at £19.99. So we add extras that cost you little, feel like a lot, and only the live has.</p>
-          <h3>The hero offer, only on the live</h3>
-          <table class="receipt">
-            <caption class="sr">What is in the hero offer</caption>
-            <tbody>
-              <tr><th scope="row">The winter bundle: your bestselling 3-in-1 (over 2,000 sold on TikTok Shop when we looked) plus Immune+ for the season.</th><td>TikTok only</td></tr>
-              <tr><th scope="row">Two tubes of other flavours, so people try something new.</th><td>Free</td></tr>
-              <tr><th scope="row">The Phizz bottle, which isn't on sale anywhere.</th><td>Free</td></tr>
-              <tr><th scope="row">Delivery, with no minimum spend.</th><td>Free</td></tr>
-            </tbody>
-          </table>
-          <p class="block">List the bundle a week or two early, so TikTok shows the full price struck through on the day, with the total value right next to it.</p>
-          <h3>Three ways in</h3>
-          <ol class="steps">
-            <li><span><strong>Try it.</strong> A single tube at a first-time price, for viewers new to Phizz.</span></li>
-            <li><span><strong>Stock up.</strong> The winter bundle. Anyone who has already bought can add a second for less, for ten minutes only.</span></li>
-            <li class="locked"><span><strong>Never run out.</strong> Subscribe and save, so first-time buyers become monthly customers. <span class="tag">In the full plan</span></span></li>
-          </ol>
-        </section>
-
-        <section id="ideas" aria-labelledby="ideasTitle">
-          <h2 id="ideasTitle">Three ideas to stop the scroll.</h2>
-          <p>First thoughts, ahead of seeing your brand personas. We'll shape them with your team.</p>
-          <div class="ideas">
-            <h3>The fizz is the clock.</h3>
-            <p>Every flash deal starts with a tablet dropped into a glass. When the fizz stops, the deal's gone. A countdown viewers can see and hear.</p>
-            <h3>From the skies to your feed.</h3>
-            <p>Phizz flies with Emirates. We tell that story on air, then hand viewers the same tablets in a TikTok-only bundle.</p>
-            <h3>Open the office.</h3>
-            <p>A quiet Monday at Liverpool Street becomes a behind-the-scenes tour. Anyone from your team who fancies it drops in for five minutes. Nobody has to, but viewers love meeting the people behind a brand.</p>
-          </div>
-        </section>
-
-        <section id="full" aria-labelledby="fullTitle">
-          <h2 id="fullTitle">The rest unlocks when we go ahead.</h2>
-          <p>Here's what else the full plan covers. We'll take you through it, and build it with your team, once we're working together.</p>
-          <div class="care">
-            <h3>After-live care</h3>
-            <p class="care-lead">TikTok's dashboard gives you numbers. After every live, we tell you what they mean.</p>
-            <dl>
-              <div><dt>The live</dt><dd>Sales, viewers, watch time and the exact moments people bought.</dd></div>
-              <div><dt>The presenters</dt><dd>Who kept viewers watching, and who turned them into buyers.</dd></div>
-              <div><dt>The words</dt><dd>The phrases, demos and deals that were on screen when sales jumped.</dd></div>
-              <div><dt>The pattern</dt><dd>What keeps working from one live to the next, so each live builds on the last.</dd></div>
-            </dl>
-            <p class="care-foot">Every live gets better because of evidence, not guesswork.</p>
-          </div>
-          <h3>Also in the full plan</h3>
-          <ul class="locked-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Hour-by-hour run of show</b><span>All six hours mapped out: when each deal drops, when the giveaways run and who is on camera.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>The full deals plan</b><span>Discount levels, flash sales and new-customer vouchers, priced around your margins.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Preheat content</b><span>What you and your affiliates post from 24 hours to 1 hour before, so people are waiting when you go live.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Subscribe and save</b><span>How to use TikTok Shop subscriptions to turn first-time buyers into monthly customers.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Competitor watch</b><span>What similar brands are doing on TikTok Live, and how Phizz stands apart.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Crew and checklists</b><span>Who does what before, during and after the live, so nothing gets missed.</span></div></li>
-          </ul>
-        </section>
-
-        <p class="ask">Ready for the full plan?</p>
-        <p class="end"><a class="back" href="./"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>Back to the pitch</a></p>
-      </article>
+  <section class="sec" id="goal" aria-labelledby="goalTitle">
+    <div class="sec-head"><h2 id="goalTitle">Beat £10,000 on the day.</h2></div>
+    <div class="sec-body">
+      <p>Emma at TikTok told us health brands usually make about £10,000 on their grand opening day, with around half from the live. That's the bar. We're planning to clear it.</p>
+      <div class="chunk">
+        <ul class="figures">
+          <li class="fig"><b>£10,000+</b><span>across the day</span></li>
+          <li class="fig"><b>£5,000+</b><span>from the six hours live</span></li>
+        </ul>
+      </div>
+      <p class="chunk"><strong>Afterwards,</strong> you'll know what sold, when and why, so deciding on more lives is easy either way.</p>
     </div>
-  </div>
-</main>
+  </section>
 
-<script>
-/* contents rail: mark the section being read */
-(function(){
-  var links=[].slice.call(document.querySelectorAll('.toc a'));
-  var map={}; links.forEach(function(a){ map[a.getAttribute('href').slice(1)]=a; });
-  var secs=[].slice.call(document.querySelectorAll('.col section[id]'));
-  if(!('IntersectionObserver' in window)||!secs.length) return;
-  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){
-    links.forEach(function(l){ l.removeAttribute('aria-current'); }); var a=map[e.target.id]; if(a) a.setAttribute('aria-current','true'); } }); },
-    {rootMargin:'-30% 0px -60% 0px'});
-  secs.forEach(function(s){ io.observe(s); });
-})();
-</script>
+  <section class="sec" id="audience" aria-labelledby="audienceTitle">
+    <div class="sec-head"><h2 id="audienceTitle">Busy adults. One easy habit.</h2></div>
+    <div class="sec-body">
+      <p>Your website speaks to four kinds of people, and your reviews show the same people buying:</p>
+      <ul class="people">
+        <li>Working parents</li>
+        <li>Commuters who train before work</li>
+        <li>Nurses on long shifts</li>
+        <li>Frequent travellers</li>
+      </ul>
+      <div class="chunk">
+        <h3>Three things that shape the live</h3>
+        <dl class="findings rows">
+          <div><dt>Their moments</dt><dd>The school run, a workout before work, a long shift, a flight. We sell Phizz in the moments your own site names, not as a list of ingredients.</dd></div>
+          <div><dt>Their questions</dt><dd>Taste and sugar come up most in your reviews. We mix one on camera, react honestly, and answer sugar with your own line: less sugar than a single grape.</dd></div>
+          <div><dt>Their season</dt><dd>Rivals sell summer, heat and festivals. Your live lands as party season and Christmas shopping begin, and none of them speaks to either yet.</dd></div>
+        </dl>
+      </div>
+      <p class="chunk standout"><strong>The space is open.</strong> Big names like Berocca and Dioralyte have no UK TikTok account we could find, and the biggest UK hydration account we found has 22,300 followers.</p>
+      <p class="note">As of October 2026.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="offer" aria-labelledby="offerTitle">
+    <div class="sec-head"><h2 id="offerTitle">Low prices are everywhere. This offer isn't.</h2></div>
+    <div class="sec-body">
+      <p>You're planning your lowest price anywhere for the day. On its own, that won't stand out:</p>
+      <ul class="reasons">
+        <li>In Black Friday season, every brand has a low price.</li>
+        <li>Your website already gives free delivery over £15 and a free tube at £19.99.</li>
+      </ul>
+      <p>So we add extras that cost you little, feel like a lot, and only the live has.</p>
+      <div class="chunk">
+        <h3>The hero offer, only on the live</h3>
+        <table class="receipt">
+          <caption class="sr">What is in the hero offer</caption>
+          <tbody>
+            <tr><th scope="row">The winter bundle: your bestselling 3-in-1 (over 2,000 sold on TikTok Shop when we looked) plus Immune+ for the season.</th><td>TikTok only</td></tr>
+            <tr><th scope="row">Two tubes of other flavours, so people try something new.</th><td>Free</td></tr>
+            <tr><th scope="row">The Phizz bottle, which isn't on sale anywhere.</th><td>Free</td></tr>
+            <tr><th scope="row">Delivery, with no minimum spend.</th><td>Free</td></tr>
+          </tbody>
+        </table>
+        <p class="note">List the bundle a week or two early, so TikTok shows the full price struck through on the day, with the total value right next to it.</p>
+      </div>
+      <div class="chunk">
+        <h3>Three ways in</h3>
+        <ol class="steps">
+          <li><span><strong>Try it.</strong> A single tube at a first-time price, for viewers new to Phizz.</span></li>
+          <li><span><strong>Stock up.</strong> The winter bundle. Anyone who has already bought can add a second for less, for ten minutes only.</span></li>
+          <li class="locked"><span><strong>Never run out.</strong> Subscribe and save, so first-time buyers become monthly customers. <span class="tag">In the full plan</span></span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ideas" aria-labelledby="ideasTitle">
+    <div class="sec-head"><h2 id="ideasTitle">Three ideas to stop the scroll.</h2></div>
+    <div class="sec-body">
+      <p>First thoughts, ahead of seeing your brand personas. We'll shape them with your team.</p>
+      <div class="chunk">
+        <div class="idea"><h3>The fizz is the clock.</h3><p>Every flash deal starts with a tablet dropped into a glass. When the fizz stops, the deal's gone. A countdown viewers can see and hear.</p></div>
+        <div class="idea"><h3>From the skies to your feed.</h3><p>Phizz flies with Emirates. We tell that story on air, then hand viewers the same tablets in a TikTok-only bundle.</p></div>
+        <div class="idea"><h3>Open the office.</h3><p>A quiet Monday at Liverpool Street becomes a behind-the-scenes tour. Anyone from your team who fancies it drops in for five minutes. Nobody has to, but viewers love meeting the people behind a brand.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="full" aria-labelledby="fullTitle">
+    <div class="sec-head"><h2 id="fullTitle">The rest unlocks when we go ahead.</h2></div>
+    <div class="sec-body">
+      <p>Here's what else the full plan covers. We'll take you through it, and build it with your team, once we're working together.</p>
+      <div class="chunk care">
+        <h3>After-live care</h3>
+        <p class="care-lead">TikTok's dashboard gives you numbers. After every live, we tell you what they mean.</p>
+        <dl>
+          <div><dt>The live</dt><dd>Sales, viewers, watch time and the exact moments people bought.</dd></div>
+          <div><dt>The presenters</dt><dd>Who kept viewers watching, and who turned them into buyers.</dd></div>
+          <div><dt>The words</dt><dd>The phrases, demos and deals that were on screen when sales jumped.</dd></div>
+          <div><dt>The pattern</dt><dd>What keeps working from one live to the next, so each live builds on the last.</dd></div>
+        </dl>
+        <p class="care-foot">Every live gets better because of evidence, not guesswork.</p>
+      </div>
+      <div class="chunk">
+        <h3>Also in the full plan</h3>
+        <ul class="locked-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Hour-by-hour run of show</b><span>All six hours mapped out: when each deal drops, when the giveaways run and who is on camera.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>The full deals plan</b><span>Discount levels, flash sales and new-customer vouchers, priced around your margins.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Preheat content</b><span>What you and your affiliates post from 24 hours to 1 hour before, so people are waiting when you go live.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Subscribe and save</b><span>How to use TikTok Shop subscriptions to turn first-time buyers into monthly customers.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Competitor watch</b><span>What similar brands are doing on TikTok Live, and how Phizz stands apart.</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><div><b>Crew and checklists</b><span>Who does what before, during and after the live, so nothing gets missed.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="close">
+    <p class="ask">Ready for the full plan?</p>
+    <a class="back" href="./"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>Back to the pitch</a>
+  </footer>
+</main>
 </body>
 </html>
